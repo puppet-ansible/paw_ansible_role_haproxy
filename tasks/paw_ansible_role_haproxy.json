@@ -1,0 +1,136 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "Execute the entire Ansible role imperatively",
+  "input_method": "environment",
+  "parameters": {
+    "haproxy_socket": {
+      "description": "Ansible role variable (default: /var/lib/haproxy/stats)",
+      "type": "Optional[String]"
+    },
+    "haproxy_chroot": {
+      "description": "Ansible role variable (default: /var/lib/haproxy)",
+      "type": "Optional[String]"
+    },
+    "haproxy_user": {
+      "description": "Ansible role variable (default: haproxy)",
+      "type": "Optional[String]"
+    },
+    "haproxy_group": {
+      "description": "Ansible role variable (default: haproxy)",
+      "type": "Optional[String]"
+    },
+    "global_var": {
+      "description": "",
+      "type": "Optional[String]"
+    },
+    "haproxy_connect_timeout": {
+      "description": "Default haproxy timeouts",
+      "type": "Optional[Integer]"
+    },
+    "haproxy_client_timeout": {
+      "description": "Ansible role variable (default: 50000)",
+      "type": "Optional[Integer]"
+    },
+    "haproxy_server_timeout": {
+      "description": "Ansible role variable (default: 50000)",
+      "type": "Optional[Integer]"
+    },
+    "haproxy_frontend_name": {
+      "description": "Frontend settings.",
+      "type": "Optional[String]"
+    },
+    "haproxy_frontend_bind_address": {
+      "description": "Ansible role variable (default: *)",
+      "type": "Optional[String]"
+    },
+    "haproxy_frontend_port": {
+      "description": "Ansible role variable (default: 80)",
+      "type": "Optional[Integer]"
+    },
+    "haproxy_frontend_mode": {
+      "description": "Ansible role variable (default: http)",
+      "type": "Optional[String]"
+    },
+    "haproxy_backend_name": {
+      "description": "Backend settings.",
+      "type": "Optional[String]"
+    },
+    "haproxy_backend_mode": {
+      "description": "Ansible role variable (default: http)",
+      "type": "Optional[String]"
+    },
+    "haproxy_backend_balance_method": {
+      "description": "Ansible role variable (default: roundrobin)",
+      "type": "Optional[String]"
+    },
+    "haproxy_backend_httpchk": {
+      "description": "Ansible role variable (default: HEAD / HTTP/1.1\\r\\nHost:localhost)",
+      "type": "Optional[String]"
+    },
+    "haproxy_backend_servers": {
+      "description": "List of backend servers.",
+      "type": "Optional[Array]"
+    },
+    "haproxy_global_vars": {
+      "description": "Extra global vars (see README for example usage).",
+      "type": "Optional[Array]"
+    },
+    "haproxy_template": {
+      "description": "Ansible role variable (default: haproxy.cfg.j2)",
+      "type": "Optional[String]"
+    },
+    "par_tags": {
+      "description": "An array of Ansible tags to execute (optional)",
+      "type": "Optional[Array[String]]"
+    },
+    "par_skip_tags": {
+      "description": "An array of Ansible tags to skip (optional)",
+      "type": "Optional[Array[String]]"
+    },
+    "par_start_at_task": {
+      "description": "The name of the task to start execution at (optional)",
+      "type": "Optional[String]"
+    },
+    "par_limit": {
+      "description": "Limit playbook execution to specific hosts (optional)",
+      "type": "Optional[String]"
+    },
+    "par_verbose": {
+      "description": "Enable verbose output from Ansible (optional)",
+      "type": "Optional[Boolean]"
+    },
+    "par_check_mode": {
+      "description": "Run Ansible in check mode (dry-run) (optional)",
+      "type": "Optional[Boolean]"
+    },
+    "par_timeout": {
+      "description": "Timeout in seconds for playbook execution (optional)",
+      "type": "Optional[Integer]"
+    },
+    "par_user": {
+      "description": "Remote user to use for Ansible connections (optional)",
+      "type": "Optional[String]"
+    },
+    "par_env_vars": {
+      "description": "Additional environment variables for ansible-playbook execution (optional)",
+      "type": "Optional[Hash]"
+    }
+  },
+  "implementations": [
+    {
+      "name": "paw_ansible_role_haproxy.sh",
+      "requirements": [
+        "shell"
+      ],
+      "input_method": "environment"
+    },
+    {
+      "name": "paw_ansible_role_haproxy.ps1",
+      "requirements": [
+        "powershell"
+      ],
+      "input_method": "environment"
+    }
+  ]
+}

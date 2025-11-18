@@ -1,0 +1,19 @@
+---
+paw_ansible_role_haproxy::haproxy_socket: "/var/lib/haproxy/stats"
+paw_ansible_role_haproxy::haproxy_chroot: "/var/lib/haproxy"
+paw_ansible_role_haproxy::haproxy_user: haproxy
+paw_ansible_role_haproxy::haproxy_group: haproxy
+paw_ansible_role_haproxy::haproxy_connect_timeout: 5000
+paw_ansible_role_haproxy::haproxy_client_timeout: 50000
+paw_ansible_role_haproxy::haproxy_server_timeout: 50000
+paw_ansible_role_haproxy::haproxy_frontend_name: hafrontend
+paw_ansible_role_haproxy::haproxy_frontend_bind_address: "*"
+paw_ansible_role_haproxy::haproxy_frontend_port: 80
+paw_ansible_role_haproxy::haproxy_frontend_mode: http
+paw_ansible_role_haproxy::haproxy_backend_name: habackend
+paw_ansible_role_haproxy::haproxy_backend_mode: http
+paw_ansible_role_haproxy::haproxy_backend_balance_method: roundrobin
+paw_ansible_role_haproxy::haproxy_backend_httpchk: HEAD / HTTP/1.1\r\nHost:localhost
+paw_ansible_role_haproxy::haproxy_backend_servers: []
+paw_ansible_role_haproxy::haproxy_global_vars: []
+paw_ansible_role_haproxy::haproxy_template: haproxy.cfg.j2
