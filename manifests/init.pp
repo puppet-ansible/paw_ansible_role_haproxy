@@ -68,46 +68,46 @@ class paw_ansible_role_haproxy (
 # Execute the Ansible role using PAR (Puppet Ansible Runner)
 # Playbook synced via pluginsync to agent's cache directory
 # Check for common paw::par_vardir setting, then module-specific, then default
-$_par_vardir = $par_vardir ? {
-  undef   => lookup('paw::par_vardir', Stdlib::Absolutepath, 'first', '/opt/puppetlabs/puppet/cache'),
-  default => $par_vardir,
-}
-$playbook_path = "${_par_vardir}/lib/puppet_x/ansible_modules/ansible_role_haproxy/playbook.yml"
+  $_par_vardir = $par_vardir ? {
+    undef   => lookup('paw::par_vardir', Stdlib::Absolutepath, 'first', '/opt/puppetlabs/puppet/cache'),
+    default => $par_vardir,
+  }
+  $playbook_path = "${_par_vardir}/lib/puppet_x/ansible_modules/ansible_role_haproxy/playbook.yml"
 
-par { 'paw_ansible_role_haproxy-main':
-  ensure        => present,
-  playbook      => $playbook_path,
-  playbook_vars => {
-        'haproxy_socket' => $haproxy_socket,
-        'haproxy_chroot' => $haproxy_chroot,
-        'haproxy_user' => $haproxy_user,
-        'haproxy_group' => $haproxy_group,
-        'global_var' => $global_var,
-        'haproxy_connect_timeout' => $haproxy_connect_timeout,
-        'haproxy_client_timeout' => $haproxy_client_timeout,
-        'haproxy_server_timeout' => $haproxy_server_timeout,
-        'haproxy_frontend_name' => $haproxy_frontend_name,
-        'haproxy_frontend_bind_address' => $haproxy_frontend_bind_address,
-        'haproxy_frontend_port' => $haproxy_frontend_port,
-        'haproxy_frontend_mode' => $haproxy_frontend_mode,
-        'haproxy_backend_name' => $haproxy_backend_name,
-        'haproxy_backend_mode' => $haproxy_backend_mode,
-        'haproxy_backend_balance_method' => $haproxy_backend_balance_method,
-        'haproxy_backend_httpchk' => $haproxy_backend_httpchk,
-        'haproxy_backend_servers' => $haproxy_backend_servers,
-        'haproxy_global_vars' => $haproxy_global_vars,
-        'haproxy_template' => $haproxy_template
-              },
-  tags          => $par_tags,
-  skip_tags     => $par_skip_tags,
-  start_at_task => $par_start_at_task,
-  limit         => $par_limit,
-  verbose       => $par_verbose,
-  check_mode    => $par_check_mode,
-  timeout       => $par_timeout,
-  user          => $par_user,
-  env_vars      => $par_env_vars,
-  logoutput     => $par_logoutput,
-  exclusive     => $par_exclusive,
-}
+  par { 'paw_ansible_role_haproxy-main':
+    ensure        => present,
+    playbook      => $playbook_path,
+    playbook_vars => {
+      'haproxy_socket'                 => $haproxy_socket,
+      'haproxy_chroot'                 => $haproxy_chroot,
+      'haproxy_user'                   => $haproxy_user,
+      'haproxy_group'                  => $haproxy_group,
+      'global_var'                     => $global_var,
+      'haproxy_connect_timeout'        => $haproxy_connect_timeout,
+      'haproxy_client_timeout'         => $haproxy_client_timeout,
+      'haproxy_server_timeout'         => $haproxy_server_timeout,
+      'haproxy_frontend_name'          => $haproxy_frontend_name,
+      'haproxy_frontend_bind_address'  => $haproxy_frontend_bind_address,
+      'haproxy_frontend_port'          => $haproxy_frontend_port,
+      'haproxy_frontend_mode'          => $haproxy_frontend_mode,
+      'haproxy_backend_name'           => $haproxy_backend_name,
+      'haproxy_backend_mode'           => $haproxy_backend_mode,
+      'haproxy_backend_balance_method' => $haproxy_backend_balance_method,
+      'haproxy_backend_httpchk'        => $haproxy_backend_httpchk,
+      'haproxy_backend_servers'        => $haproxy_backend_servers,
+      'haproxy_global_vars'            => $haproxy_global_vars,
+      'haproxy_template'               => $haproxy_template,
+    },
+    tags          => $par_tags,
+    skip_tags     => $par_skip_tags,
+    start_at_task => $par_start_at_task,
+    limit         => $par_limit,
+    verbose       => $par_verbose,
+    check_mode    => $par_check_mode,
+    timeout       => $par_timeout,
+    user          => $par_user,
+    env_vars      => $par_env_vars,
+    logoutput     => $par_logoutput,
+    exclusive     => $par_exclusive,
+  }
 }
